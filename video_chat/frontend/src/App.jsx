@@ -4,6 +4,7 @@ import VideoPlayer from './components/VideoPlayer';
 import Options from './components/Options';
 import Notifications from './components/Notifications';
 import useClasses from './hooks/useClassesHook';
+import ChatBox from "./components/ChatBox";
 
 const styles = (theme) => ({
     appBar: {
@@ -29,16 +30,22 @@ const App = () => {
 const classes = useClasses(styles);
     return (
     <div className={classes.wrapper}>
-     <AppBar className={classes.appBar} position="static" color="inherit">
+     {/* <AppBar className={classes.appBar} position="static" color="inherit">
          <Typography variant="h4" align="center">
             Video Chat
          </Typography>
-     </AppBar>
+     </AppBar> */}
 
-     <VideoPlayer/>
      <Options>
         <Notifications/>
      </Options>
+
+     <ChatBox callerInfo={"meow"}/>
+
+     <VideoPlayer/>
+     {/* <Options>
+        <Notifications/>
+     </Options> */}
      
      </div>
   )
