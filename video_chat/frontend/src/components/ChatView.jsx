@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { socket } from "../SocketContext";
+// import { socket } from "../SocketContext";
+import { io } from "socket.io-client";
+
+const socket = io.connect("http://localhost:5000");
 
 function ChatView() {
   const [chatMessages, setChatMessages] = useState(["hi", "he"]);
@@ -11,7 +14,7 @@ function ChatView() {
     return element;
   };
 
-  socket.on("get-msg", (sender, text) => {
+  socket.emit("get-msg", (sender, text) => {
     console.log("message recieved!");
     chatMessages.push(text);
     setChatMessages(chatMessages);

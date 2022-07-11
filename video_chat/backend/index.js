@@ -1,4 +1,4 @@
-import express from "express";
+import express, { text } from "express";
 import {createServer} from "http";
 import cors from "cors";
 import {Server} from "socket.io";
@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
     socket.emit("me", socket.id);
+    console.log("connected")
 
     //broadcast => sending a message to all connected clients
     socket.on("disconnect", () => {
@@ -36,6 +37,16 @@ io.on("connection", (socket) => {
 
     socket.on("answercall", (data) => {
       io.to(data.to).emit("callaccepted", data.signal)
+    })
+
+    socket.on("send-msg", (text) => {
+        console.log(`the msg that was sent is => ${text}`);
+        io.to(socket.id).emit("get-msg", socket.data.sender, text)
+
+    })
+
+    socket.on("get-msg", (text) => {
+        console.log("we are on server - get-msg");
     })
 })
 
