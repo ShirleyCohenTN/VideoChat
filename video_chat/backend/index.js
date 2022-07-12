@@ -40,14 +40,15 @@ io.on("connection", (socket) => {
     })
 
     socket.on("send-msg", (text) => {
-        console.log(`the msg that was sent is => ${text}`);
-        io.to(socket.id).emit("get-msg", socket.data.sender, text)
+        console.log(`a message was sent from ${socket.id} => ${text}`);
+        io.emit("get-msg", text)
 
     })
 
-    socket.on("get-msg", (text) => {
-        console.log("we are on server - get-msg");
-    })
+    // socket.on("get-msg", (text) => {
+    //     console.log("we are on server - get-msg");
+    //     io.emit("get-msg", text);
+    // })
 })
 
 httpServer.listen(PORT, () => {

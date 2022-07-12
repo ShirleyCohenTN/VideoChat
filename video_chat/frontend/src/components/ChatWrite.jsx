@@ -2,14 +2,16 @@ import React, {useState, useContext} from 'react'
 import {SocketContext} from "../SocketContext";
 import { io } from "socket.io-client";
 
-const socket = io.connect("http://localhost:5000");
+// const socket = io.connect("http://localhost:5000");
+const socket = io("http://localhost:5000");
+
 
 function ChatWrite({callerInfo}) {
 const [chatMessage, setChatMessage] = useState("");
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitteddd");
+    console.log("submittedd");
     socket.emit("send-msg", callerInfo + ": " + chatMessage);
     setChatMessage("");
   };
