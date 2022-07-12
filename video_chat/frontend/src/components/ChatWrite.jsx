@@ -6,13 +6,14 @@ import { io } from "socket.io-client";
 const socket = io("http://localhost:5000");
 
 
-function ChatWrite({callerInfo}) {
+function ChatWrite() {
 const [chatMessage, setChatMessage] = useState("");
+const {callerName} = useContext(SocketContext);
 
 const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submittedd");
-    socket.emit("send-msg", callerInfo + ": " + chatMessage);
+    socket.emit("send-msg", callerName + ": " + chatMessage);
     setChatMessage("");
   };
 
