@@ -36,16 +36,18 @@ const classes = useClasses(styles);
          </Typography>
      </AppBar> */}
 
-     <Options>
+     
+<VideoPlayer/>
+
+<Options>
         <Notifications/>
      </Options>
 
-     <ChatBox callerInfo={"meow"}/>
 
-     <VideoPlayer/>
-     {/* <Options>
-        <Notifications/>
-     </Options> */}
+     {/* <ChatBox callerInfo={"meow"}/> */}
+
+     
+
      
      </div>
   )

@@ -31,10 +31,15 @@ function ChatView() {
     <div
       style={{
         height: 80,
-        background: "white",
+        background: "#DBDBDB",
         maxHeight: "150px",
         overflow: "auto",
         padding: "2%",
+        scrollBehavior: "smooth",
+        display: "flex",
+        flexDirection:"column",
+        border: "2px solid black !important",
+        width: "240%"
       }}
     >
       {mapElements()}

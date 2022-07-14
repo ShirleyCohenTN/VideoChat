@@ -5,13 +5,14 @@ import { SocketContext } from "../SocketContext";
 
 const styles = (theme) => ({
   video: {
-    width: "480px !important",
+    width: "450px !important",
+    height: "300px"
   },
   gridContainer: {
     justifyContent: "center",
   },
   paper: {
-    padding: "10px",
+    padding: "5px",
     border: "2px solid black",
     margin: "10px",
   },
