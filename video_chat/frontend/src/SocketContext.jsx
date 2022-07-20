@@ -13,6 +13,7 @@ const ContextProvider = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
   const [callerName, setCallerName] = useState("");
+  const [idToCall, setIdToCall] = useState("");
 
 
   const myVideo = useRef();
@@ -81,7 +82,7 @@ const ContextProvider = ({ children }) => {
 
       peer.signal(signal);
 
-      
+
     });
 
     connectionRef.current = peer;
@@ -113,6 +114,8 @@ const ContextProvider = ({ children }) => {
         callUser,
         answerCall,
         leaveCall,
+        idToCall,
+        setIdToCall
       }}
     >
         {children}

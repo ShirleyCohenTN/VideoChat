@@ -47,12 +47,17 @@ const styles = (theme) => ({
       callEnded,
       me,
       callUser,
+      from,
+      idToCall,
+      setIdToCall
     } = useContext(SocketContext);
   
     const classes = useClasses(styles);
   
-    const [idToCall, setIdToCall] = useState("");
-  
+    // const [idToCall, setIdToCall] = useState("");
+
+    console.log("my id NotInAcall => ", me)
+    console.log("idToCall => ", idToCall);
    
     return (
       <Container className={classes.container}>

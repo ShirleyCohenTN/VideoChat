@@ -11,9 +11,10 @@ import {
 import useClasses from "../hooks/useClassesHook";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Assignment, Phone, PhoneDisabled } from "@mui/icons-material";
-import { SocketContext } from "../SocketContext";
+import { socket, SocketContext } from "../SocketContext";
 import { io } from "socket.io-client";
 import ChatBox from "./ChatBox";
+import { useEffect } from "react";
 
 const styles = (theme) => ({
   root: {
@@ -44,9 +45,19 @@ const styles = (theme) => ({
 const DuringAcall = ({ children }) => {
   const {
     leaveCall,
+    idToCall,
+    me,
+    setMe
   } = useContext(SocketContext);
 
   const classes = useClasses(styles);
+
+ useEffect(()=>{
+    socket.emit("join-room", idToCall)
+ }, [])
+
+ console.log("my id DuringAcall => ", me)
+  console.log("we are duringAcall , id => ", idToCall);
 
   return (
     <Container className={classes.container}>

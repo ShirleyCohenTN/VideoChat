@@ -24,7 +24,9 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
     socket.emit("me", socket.id);
-    console.log("connected")
+    // console.log("connected")
+
+    console.log("my id is => ", socket.id);
 
     //broadcast => sending a message to all connected clients
     socket.on("disconnect", () => {
@@ -39,15 +41,37 @@ io.on("connection", (socket) => {
       io.to(data.to).emit("callaccepted", data.signal)
     })
 
-    socket.on("send-msg", (text, room) => {
-        console.log(`a message was sent from ${socket.id} => ${text}`);
-        io.emit("get-msg", text)
+    //THE WORKING ONE
+    // socket.on("send-msg", (text, room) => {
+    //     console.log(`a message was sent from ${socket.id} => ${text}`);
+    //     io.emit("get-msg", text)
+
+    // })
+
+    socket.on("send-msg", (text, room, me) => {
+        if(room === ""){
+            io.in(socket.id).emit("get-msg", text);
+            console.log("i am in if and my id is => ", socket.id)
+            
+        }
+        else{
+            io.in(room).emit("get-msg", text)
+            console.log("i am in else and my id is => ", socket.id)
+        }
+        console.log(`a message was sent from ${socket.id}, id: ${me} => ${text}`);
+        // io.emit("get-msg", text)
 
     })
 
     socket.on("join-room", (room) => {
-        socket.join(room)
-        console.log(`we are in join-room => ${room}`)
+        if(room === "")
+        {
+          socket.join(socket.id);
+          console.log(`user:${socket.id} === i am in join-room => ${socket.id}`)
+        }else{
+            socket.join(room) 
+            console.log(`user:${socket.id} === i am in join-room => ${room}`)
+        }
        
     })
 
