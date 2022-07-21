@@ -41,13 +41,6 @@ io.on("connection", (socket) => {
       io.to(data.to).emit("callaccepted", data.signal)
     })
 
-    //THE WORKING ONE
-    // socket.on("send-msg", (text, room) => {
-    //     console.log(`a message was sent from ${socket.id} => ${text}`);
-    //     io.emit("get-msg", text)
-
-    // })
-
     socket.on("send-msg", (text, room, me) => {
         if(room === ""){
             io.in(socket.id).emit("get-msg", text);
@@ -59,7 +52,6 @@ io.on("connection", (socket) => {
             console.log("i am in else and my id is => ", socket.id)
         }
         console.log(`a message was sent from ${socket.id}, id: ${me} => ${text}`);
-        // io.emit("get-msg", text)
 
     })
 
@@ -75,23 +67,6 @@ io.on("connection", (socket) => {
        
     })
 
-    // socket.on("send-msg", (text, room) => {
-    //     if(room === ""){
-    //         socket.broadcast.emit("get-msg", text)
-    //     }else{
-    //         socket.join(room)
-    //         console.log("we joined the room")
-    //         console.log("we got to here, means we are in the room ", room)
-    //         io.to(room).emit("get-msg", text)
-    //     }
-    //     console.log(`a message was sent from ${socket.id} => ${text}`);
-    //     // io.emit("get-msg", text)
-    // })
-
-    // socket.on("get-msg", (text) => {
-    //     console.log("we are on server - get-msg");
-    //     io.emit("get-msg", text);
-    // })
 })
 
 httpServer.listen(PORT, () => {

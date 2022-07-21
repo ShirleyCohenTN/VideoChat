@@ -11,7 +11,6 @@ import useClasses from "../hooks/useClassesHook";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Assignment, Phone} from "@mui/icons-material";
 import { SocketContext } from "../SocketContext";
-import ChatBox from "./ChatBox";
 
 const styles = (theme) => ({
     root: {
@@ -41,24 +40,16 @@ const styles = (theme) => ({
   });
   const NotInAcall = ({ children }) => {
     const {
-      callAccepted,
       callerName,
       setCallerName,
-      callEnded,
       me,
       callUser,
-      from,
       idToCall,
       setIdToCall
     } = useContext(SocketContext);
   
     const classes = useClasses(styles);
-  
-    // const [idToCall, setIdToCall] = useState("");
-
-    console.log("my id NotInAcall => ", me)
-    console.log("idToCall => ", idToCall);
-   
+ 
     return (
       <Container className={classes.container}>
         <Paper elevation={10} className={classes.paper}>

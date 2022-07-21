@@ -1,18 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
   Button,
   Box,
-  TextField,
-  Grid,
-  Typography,
   Container,
   Paper,
 } from "@mui/material";
 import useClasses from "../hooks/useClassesHook";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import { Assignment, Phone, PhoneDisabled } from "@mui/icons-material";
+import { PhoneDisabled } from "@mui/icons-material";
 import { socket, SocketContext } from "../SocketContext";
-import { io } from "socket.io-client";
 import ChatBox from "./ChatBox";
 import { useEffect } from "react";
 
@@ -32,22 +27,22 @@ const styles = (theme) => ({
   },
   margin: {
     marginTop: "3% !important",
-    // width:"30% !important",
   },
   padding: {
     padding: "2% !important",
   },
   paper: {
     padding: "10px 20px",
-    border: "2px solid black",
+    background: "transparent !important",
+    borderColor: "transparent !important",
+    borderShadow: "transparent !important"
+
   },
 });
 const DuringAcall = ({ children }) => {
   const {
     leaveCall,
     idToCall,
-    me,
-    setMe
   } = useContext(SocketContext);
 
   const classes = useClasses(styles);
@@ -56,15 +51,12 @@ const DuringAcall = ({ children }) => {
     socket.emit("join-room", idToCall)
  }, [])
 
- console.log("my id DuringAcall => ", me)
-  console.log("we are duringAcall , id => ", idToCall);
-
   return (
     <Container className={classes.container}>
       <Paper elevation={10} className={classes.paper}>
         <ChatBox />
-
-        <Box textAlign="center">
+      </Paper>
+      <Box textAlign="center">
           <Button
             variant="contained"
             color="error"
@@ -76,7 +68,6 @@ const DuringAcall = ({ children }) => {
             Hang Up
           </Button>
         </Box>
-      </Paper>
     </Container>
   );
 };

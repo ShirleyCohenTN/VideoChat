@@ -1,9 +1,5 @@
 import React, {useState, useContext} from 'react'
 import {socket, SocketContext} from "../SocketContext";
-import { io } from "socket.io-client";
-
-// const socket = io("http://localhost:5000");
-
 
 function ChatWrite() {
 const [chatMessage, setChatMessage] = useState("");
@@ -18,7 +14,7 @@ console.log("my id => ", me);
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submittedd");
+    console.log("submitted");
     socket.emit("send-msg", callerName + ": " + chatMessage, idToCall, me);
     setChatMessage("");
   };
@@ -32,20 +28,18 @@ const handleSubmit = (e) => {
       <form style ={{display: "inline-block"}} onSubmit={handleSubmit}>
         <input
           style={{
-            width: "294%",
+            width: "298%",
             height: 40,
-            // border: "none",
-            // borderTopStyle: "solid",
             borderTopWidth: 2,
-            // borderTopColor: "gray",
             paddingLeft: "2%",
             border: "2px solid black !important",
             display:"block !important",
             marginRight: "auto !important",
             marginLeft: "auto !important",
+            marginTop: "0.5px"
           }}
           type="text"
-          placeholder="Write Something..."
+          placeholder="Type your message and hit ENTER"
           value={chatMessage}
           onChange={handleChange}
         />

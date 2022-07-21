@@ -12,7 +12,6 @@ const Notifications = () => {
           <Typography variant="h6" color="green" style={{fontWeight:"bold"}}>
           {call.callerName} is calling: 
           </Typography>
-           
          
         <Button variant="contained" color="success" style={{marginLeft:"1%"}} onClick={answerCall}>
            Answer
