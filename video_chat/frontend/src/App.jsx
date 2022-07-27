@@ -5,20 +5,10 @@ import Notifications from "./components/Notifications";
 import useClasses from "./hooks/useClassesHook";
 
 const styles = (theme) => ({
-  appBar: {
-    borderRadius: 15,
-    margin: "30px 100px",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "30% !important",
-    border: "2px solid black",
-  },
   wrapper: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "center !important",
     width: "100%",
   },
 });

@@ -12,12 +12,15 @@ const styles = (theme) => ({
     height: "300px",
   },
   gridContainer: {
-    justifyContent: "center",
+    justifyContent: "center !important",
   },
   paper: {
     padding: "5px",
     border: "2px solid black",
     margin: "10px",
+    flexDirection:"row",
+    textAlign: "center",
+   
   },
 });
 
@@ -43,9 +46,9 @@ const VideoPlayer = () => {
       {stream && (
         <Paper className={classes.paper}>
           <Grid item xs={12} md={6}>
-            <Typography variant="h5" gutterBottom>
+            {/* <Typography variant="h5" gutterBottom>
               {callerName || "Name"}
-            </Typography>
+            </Typography> */}
             <video
               playsInline
               muted
@@ -53,8 +56,9 @@ const VideoPlayer = () => {
               autoPlay
               className={classes.video}
             />
-
-            <ToggleButton color="primary"
+          </Grid>
+          <Grid>
+          <ToggleButton color="primary"
               onClick={() => closeCamera()}
               selected={cameraSelected}
               onChange={() => {
@@ -74,16 +78,18 @@ const VideoPlayer = () => {
               <MicIcon />
             </ToggleButton>
           </Grid>
+          
         </Paper>
+        
       )}
 
       {/* {user's own video} */}
       {callAccepted && !callEnded && (
         <Paper className={classes.paper}>
           <Grid item xs={12} md={6}>
-            <Typography variant="h5" gutterBottom>
+            {/* <Typography variant="h5" gutterBottom>
               {call.callerName || "Name"}
-            </Typography>
+            </Typography> */}
             <video
               playsInline
               ref={userVideo}

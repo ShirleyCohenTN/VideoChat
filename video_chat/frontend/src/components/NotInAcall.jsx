@@ -61,9 +61,9 @@ const styles = (theme) => ({
             <Grid container className={classes.gridContainer}>
               <Grid item xs={12} md={6} className={classes.padding}>
                 <Typography gutterBottom variant="h6">
-                  Account Info
+                  Enter your name
                   <TextField
-                    label="name"
+                    label="your name"
                     value={callerName}
                     onChange={(e) => setCallerName(e.target.value)}
                     fullWidth
