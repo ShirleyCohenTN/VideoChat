@@ -1,0 +1,19 @@
+.chatview-container {
+  height: 80px;
+  background: white;
+  max-height: 150px;
+  overflow: auto;
+  padding: 2%;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  width: 239%;
+  font-family: Helvetica;
+}
+
+.inner-title {
+  text-align: center;
+  font-weight: bold;
+  font-family: Helvetica;
+}

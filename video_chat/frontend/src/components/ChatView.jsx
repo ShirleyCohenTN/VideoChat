@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { socket } from "../SocketContext";
+import "../css/ChatView.css"
 
 function ChatView() {
   const [chatMessages, setChatMessages] = useState([]);
 
   const mapElements = () => {
-    console.log("we are in mapElements function...");
     let element = (chatMessages|| []).map((v, index) => (
       <div key={index}>{v}</div>
     ));
@@ -19,21 +19,9 @@ function ChatView() {
 
   return (
     <div
-      style={{
-        height: 80,
-        background: "white",
-        maxHeight: "150px",
-        overflow: "auto",
-        padding: "2%",
-        scrollBehavior: "smooth",
-        display: "flex",
-        flexDirection:"column",
-        border: "2px solid black",
-        width: "239%",
-        fontFamily:"Helvetica"
-      }}
+    className="chatview-container"
     >
-      <div style={{textAlign: "center", fontWeight:"bold", fontFamily:"Helvetica"}}>
+      <div className="inner-title">
        Start Chatting! &#128513;	
         </div>
       {mapElements()}

@@ -1,0 +1,11 @@
+.chatwrite-container{
+    width: 298%;
+    height: 40px;
+    border-top-width: 2;
+    padding-left: 2%;
+    border: 2px solid black !important;
+    display:block !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    margin-top: 0.5px
+}
