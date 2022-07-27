@@ -46,9 +46,6 @@ const VideoPlayer = () => {
       {stream && (
         <Paper className={classes.paper}>
           <Grid item xs={12} md={6}>
-            {/* <Typography variant="h5" gutterBottom>
-              {callerName || "Name"}
-            </Typography> */}
             <video
               playsInline
               muted
@@ -87,9 +84,6 @@ const VideoPlayer = () => {
       {callAccepted && !callEnded && (
         <Paper className={classes.paper}>
           <Grid item xs={12} md={6}>
-            {/* <Typography variant="h5" gutterBottom>
-              {call.callerName || "Name"}
-            </Typography> */}
             <video
               playsInline
               ref={userVideo}
