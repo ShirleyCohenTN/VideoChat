@@ -20,6 +20,7 @@ const ContextProvider = ({ children }) => {
   const userVideo = useRef();
   const connectionRef = useRef();
 
+
   useEffect(() => {
     //as the app mounts, we will ask for the user permissions for camera+audio
     navigator.mediaDevices
@@ -38,7 +39,9 @@ const ContextProvider = ({ children }) => {
     socket.on("calluser", ({ from, callerName, signal }) => {
       setCall({ isReceivedCall: true, from, callerName, signal });
     });
+
   }, []);
+
 
   const answerCall = () => {
     setCallAccepted(true);
@@ -98,6 +101,24 @@ const ContextProvider = ({ children }) => {
     window.location.reload();
   };
 
+  const closeCamera = () => {
+    const videoTrack = stream.getTracks().find(track => track.kind === "video");
+    if(videoTrack.enabled){
+      videoTrack.enabled = false;
+    }else{
+      videoTrack.enabled = true;
+    }
+  }
+
+  const muteMicrophone = () => {
+    const audioTrack = stream.getTracks().find(track => track.kind === "audio");
+    if(audioTrack.enabled){
+      audioTrack.enabled = false;
+    }else{
+      audioTrack.enabled = true;
+    }
+  }
+
   return (
     //the value now is globally all over our componenets
     <SocketContext.Provider
@@ -115,7 +136,9 @@ const ContextProvider = ({ children }) => {
         answerCall,
         leaveCall,
         idToCall,
-        setIdToCall
+        setIdToCall,
+        closeCamera,
+        muteMicrophone
       }}
     >
         {children}

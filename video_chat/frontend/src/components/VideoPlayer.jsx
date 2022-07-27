@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Grid, Typography, Paper } from "@mui/material";
 import useClasses from "../hooks/useClassesHook";
 import { SocketContext } from "../SocketContext";
+import VideocamIcon from "@mui/icons-material/Videocam";
+import MicIcon from "@mui/icons-material/Mic";
+import { ToggleButton } from "@mui/material";
 
 const styles = (theme) => ({
   video: {
     width: "450px !important",
-    height: "300px"
+    height: "300px",
   },
   gridContainer: {
     justifyContent: "center",
@@ -26,9 +29,14 @@ const VideoPlayer = () => {
     userVideo,
     stream,
     callerName,
-    callEnded
+    callEnded,
+    closeCamera,
+    muteMicrophone,
   } = useContext(SocketContext);
   const classes = useClasses(styles);
+  const [cameraSelected, setCameraSelected] = useState(true);
+  const [micSelected, setMicSelected] = useState(true);
+
   return (
     <Grid container className={classes.gridContainer}>
       {/* {our own video} */}
@@ -45,6 +53,26 @@ const VideoPlayer = () => {
               autoPlay
               className={classes.video}
             />
+
+            <ToggleButton color="primary"
+              onClick={() => closeCamera()}
+              selected={cameraSelected}
+              onChange={() => {
+                setCameraSelected(!cameraSelected);
+              }}
+            >
+              <VideocamIcon />
+            </ToggleButton>
+
+            <ToggleButton color="primary"
+              onClick={() => muteMicrophone()}
+              selected={micSelected}
+              onChange={() => {
+                setMicSelected(!micSelected);
+              }}
+            >
+              <MicIcon />
+            </ToggleButton>
           </Grid>
         </Paper>
       )}
