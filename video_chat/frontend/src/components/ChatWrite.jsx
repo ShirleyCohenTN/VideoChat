@@ -11,7 +11,7 @@ function ChatWrite() {
     callerName = "user";
   }
 
-  console.log("my id => ", me);
+  // console.log("my id => ", me);
 
   const handleSubmit = (e) => {
     e.preventDefault();

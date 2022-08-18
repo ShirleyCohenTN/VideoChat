@@ -13,7 +13,7 @@ function ChatView() {
   };
 
   socket.on("get-msg", (text) => {
-    console.log("get-msg, client side");
+    // console.log("get-msg, client side");
     setChatMessages([...chatMessages, text]);
   });
 

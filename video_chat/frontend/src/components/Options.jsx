@@ -10,7 +10,7 @@ const Options = ({ children }) => {
     callEnded
   } = useContext(SocketContext);
 
-  console.log("callAccepted => ", callAccepted);
+  // console.log("callAccepted => ", callAccepted);
 
   return (
 
